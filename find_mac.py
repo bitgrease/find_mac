@@ -22,5 +22,3 @@ ssh.close()
 with open('mac.txt', 'w') as f:
     f.write(output)
 
-u = [1, 2]
-statistics.mode(u)
