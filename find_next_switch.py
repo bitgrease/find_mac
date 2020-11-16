@@ -7,7 +7,8 @@ with open('mac.txt', 'r') as f:
 # TODO: Account for potential (though unlikely) scenario where port-ch
 # differs between separate lines in output.
 
-current-port-channel = output.split()[-1]
+current_port_channel = output.split()[-1]
+print(current_port_channel)
 
 # Will always start from net-r1
 current_switch = "net-r1"
@@ -31,6 +32,28 @@ switch_ips = {
                          }
 
 
+if current_switch == 'net-r1':
+     if current_port_channel == 'Po100':
+          next_switch_ip = switch_ips['netb-r1']
+     elif current_port_channel == 'Po12':
+          next_switch_ip = switch_ips['neta-r2']
+     elif current_port_channel.startswith('Po3'):
+          next_switch_ip = switch_ips['neta-r3']
+     elif current_port_channel.startswith('Po5'):
+          next_switch_ip = switch_ips['neta-r5']
+     elif current_port_channel.startswith('Po7'):
+          next_switch_ip = switch_ips['neta-r7']
+else:
+     if current_port_channel = == 'Po100':
+          next_switch_ip = switch_ips['netb-r1']
+     elif current_port_channel == 'Po12':
+          next_switch_ip = switch_ips['neta-r2']
+     elif current_port_channel.startswith('Po3'):
+          next_switch_ip = switch_ips['neta-r3']
+     elif current_port_channel.startswith('Po5'):
+          next_switch_ip = switch_ips['neta-r5']
+     elif current_port_channel.startswith('Po7'):
+          next_switch_ip = switch_ips['neta-r7']
 
 # best way to determine next switch is to get cdp putput and hostname
 # of port-channel remote end
